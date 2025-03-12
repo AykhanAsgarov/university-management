@@ -11,7 +11,27 @@ public abstract class Person {
     private String email;
     private final LocalDate dateOfBirth;
 
-    protected Person(int id, String fullName, String address, String phone, String email, LocalDate dateOfBirth) {
+    /*public class InvalidIdException extends Exception {
+        public InvalidIdException(String message) {
+            super(message);
+        }
+    }
+    
+    
+    public class InvalidEmailException extends Exception {
+        public InvalidEmailException(String message) {
+            super(message);
+        }
+    }
+    */
+
+    protected Person(int id, String fullName, String address, String phone, String email, LocalDate dateOfBirth) throws IllegalArgumentException  {
+        if (id <= 0) {
+            throw new IllegalArgumentException("ID must be greater than 0.");
+        }
+        if (email == null || !email.matches("@")) {
+            throw new IllegalArgumentException("Email format is invalid.");
+        }
         this.id = id;
         this.fullName = fullName;
         this.address = address;
