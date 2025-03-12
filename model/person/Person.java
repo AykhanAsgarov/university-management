@@ -29,7 +29,7 @@ public abstract class Person {
         if (id <= 0) {
             throw new IllegalArgumentException("ID must be greater than 0.");
         }
-        if (email == null || !email.matches("@")) {
+        if (email == null || !email.contains("@")) {
             throw new IllegalArgumentException("Email format is invalid.");
         }
         this.id = id;
